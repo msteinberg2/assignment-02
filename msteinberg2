@@ -1,0 +1,2579 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Lesson 2: Importing & Exploring Data"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In this lesson, we'll learn to pull data into our Python environment and run some of the first diagnostics we'll need to understand our data.\n",
+    "\n",
+    "Why don't you kick us off by importing our two most important data analytic tools into our Jupyter notebook: Pandas and Numpy?\n",
+    "\n",
+    "## Exercise 1\n",
+    "Import Pandas and NumPy into your Jupyter Notebook and assign the standard aliases to them. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercise 2\n",
+    "\n",
+    "Now let's go straight into importing data into our Python environment! Check out DC's Open Data Portal at opendata.dc.gov.\n",
+    "\n",
+    "From here, we'll import data into our Python environment in two different ways. First, let's try downloading the data from the website and then pulling it into this notebook. \n",
+    "\n",
+    "Find the City Service Requests for 2016 in DC's Open Data Portal and download the spreadsheet (.csv file) to your computer.\n",
+    "\n",
+    "This is a data set containing requests for service through DC's 311 system. People can enter these requests by calling 311, texting DC-311 (32-311), using the 311 app, or visiting the city's online 311 portal. \n",
+    "\n",
+    "Now let's try pulling the data into our Python environment using Pandas. \n",
+    "\n",
+    "\n",
+    "Pull the .csv file into your Python environment using Pandas and assign it to an object called 'df'."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "FileNotFoundError",
+     "evalue": "File b'City_Service_Requests_in_2016.csv' does not exist",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mFileNotFoundError\u001b[0m                         Traceback (most recent call last)",
+      "\u001b[1;32m<ipython-input-32-00384b3d61dd>\u001b[0m in \u001b[0;36m<module>\u001b[1;34m()\u001b[0m\n\u001b[1;32m----> 1\u001b[1;33m \u001b[0mpd\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mread_csv\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;34m\"City_Service_Requests_in_2016.csv\"\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[1;32mC:\\Users\\Michael\\Anaconda3\\lib\\site-packages\\pandas\\io\\parsers.py\u001b[0m in \u001b[0;36mparser_f\u001b[1;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, escapechar, comment, encoding, dialect, tupleize_cols, error_bad_lines, warn_bad_lines, skipfooter, skip_footer, doublequote, delim_whitespace, as_recarray, compact_ints, use_unsigned, low_memory, buffer_lines, memory_map, float_precision)\u001b[0m\n\u001b[0;32m    653\u001b[0m                     skip_blank_lines=skip_blank_lines)\n\u001b[0;32m    654\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 655\u001b[1;33m         \u001b[1;32mreturn\u001b[0m \u001b[0m_read\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mfilepath_or_buffer\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mkwds\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    656\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    657\u001b[0m     \u001b[0mparser_f\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m__name__\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mname\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mC:\\Users\\Michael\\Anaconda3\\lib\\site-packages\\pandas\\io\\parsers.py\u001b[0m in \u001b[0;36m_read\u001b[1;34m(filepath_or_buffer, kwds)\u001b[0m\n\u001b[0;32m    403\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    404\u001b[0m     \u001b[1;31m# Create the parser.\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 405\u001b[1;33m     \u001b[0mparser\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mTextFileReader\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mfilepath_or_buffer\u001b[0m\u001b[1;33m,\u001b[0m \u001b[1;33m**\u001b[0m\u001b[0mkwds\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    406\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    407\u001b[0m     \u001b[1;32mif\u001b[0m \u001b[0mchunksize\u001b[0m \u001b[1;32mor\u001b[0m \u001b[0miterator\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mC:\\Users\\Michael\\Anaconda3\\lib\\site-packages\\pandas\\io\\parsers.py\u001b[0m in \u001b[0;36m__init__\u001b[1;34m(self, f, engine, **kwds)\u001b[0m\n\u001b[0;32m    760\u001b[0m             \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0moptions\u001b[0m\u001b[1;33m[\u001b[0m\u001b[1;34m'has_index_names'\u001b[0m\u001b[1;33m]\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mkwds\u001b[0m\u001b[1;33m[\u001b[0m\u001b[1;34m'has_index_names'\u001b[0m\u001b[1;33m]\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    761\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 762\u001b[1;33m         \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_make_engine\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mengine\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    763\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    764\u001b[0m     \u001b[1;32mdef\u001b[0m \u001b[0mclose\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mC:\\Users\\Michael\\Anaconda3\\lib\\site-packages\\pandas\\io\\parsers.py\u001b[0m in \u001b[0;36m_make_engine\u001b[1;34m(self, engine)\u001b[0m\n\u001b[0;32m    964\u001b[0m     \u001b[1;32mdef\u001b[0m \u001b[0m_make_engine\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mengine\u001b[0m\u001b[1;33m=\u001b[0m\u001b[1;34m'c'\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    965\u001b[0m         \u001b[1;32mif\u001b[0m \u001b[0mengine\u001b[0m \u001b[1;33m==\u001b[0m \u001b[1;34m'c'\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 966\u001b[1;33m             \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_engine\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mCParserWrapper\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mf\u001b[0m\u001b[1;33m,\u001b[0m \u001b[1;33m**\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0moptions\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    967\u001b[0m         \u001b[1;32melse\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    968\u001b[0m             \u001b[1;32mif\u001b[0m \u001b[0mengine\u001b[0m \u001b[1;33m==\u001b[0m \u001b[1;34m'python'\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mC:\\Users\\Michael\\Anaconda3\\lib\\site-packages\\pandas\\io\\parsers.py\u001b[0m in \u001b[0;36m__init__\u001b[1;34m(self, src, **kwds)\u001b[0m\n\u001b[0;32m   1580\u001b[0m         \u001b[0mkwds\u001b[0m\u001b[1;33m[\u001b[0m\u001b[1;34m'allow_leading_cols'\u001b[0m\u001b[1;33m]\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mindex_col\u001b[0m \u001b[1;32mis\u001b[0m \u001b[1;32mnot\u001b[0m \u001b[1;32mFalse\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m   1581\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m-> 1582\u001b[1;33m         \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_reader\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mparsers\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mTextReader\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0msrc\u001b[0m\u001b[1;33m,\u001b[0m \u001b[1;33m**\u001b[0m\u001b[0mkwds\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m   1583\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m   1584\u001b[0m         \u001b[1;31m# XXX\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mpandas\\_libs\\parsers.pyx\u001b[0m in \u001b[0;36mpandas._libs.parsers.TextReader.__cinit__ (pandas\\_libs\\parsers.c:4209)\u001b[1;34m()\u001b[0m\n",
+      "\u001b[1;32mpandas\\_libs\\parsers.pyx\u001b[0m in \u001b[0;36mpandas._libs.parsers.TextReader._setup_parser_source (pandas\\_libs\\parsers.c:8873)\u001b[1;34m()\u001b[0m\n",
+      "\u001b[1;31mFileNotFoundError\u001b[0m: File b'City_Service_Requests_in_2016.csv' does not exist"
+     ]
+    }
+   ],
+   "source": [
+    "pd.read_csv(\"City_Service_Requests_in_2016.csv\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "What happened? You may have received an error like this: \"OSError: File b'City_Service_Requests_in_2016.csv' does not exist\"\n",
+    "\n",
+    "This means that the .csv file is not in the directory your notebook is calling from (which is, in fact, the directory the notebook is in). To find out which directory your notebook is calling from, import the os package and get the current working directory.\n",
+    "\n",
+    "## Exercise 3\n",
+    "\n",
+    "Import the os package and get the current working directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'C:\\\\Users\\\\Michael\\\\Desktop'"
+      ]
+     },
+     "execution_count": 33,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import os\n",
+    "os.getcwd()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Ok, now that we know what the current working directory is, we must either change the working directory or move the file into the current working directory. I'll let you decide which you want to do, but this is how you change the working directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "os.chdir('C:\\\\Users\\\\Michael\\\\Desktop') "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now you should be able to pull the data into your Jupyter Notebook. Try it again."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "os.chdir('\\\\Users\\\\Michael\\\\Desktop')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "FileNotFoundError",
+     "evalue": "File b'City_Service_Requests_in_2016.csv' does not exist",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mFileNotFoundError\u001b[0m                         Traceback (most recent call last)",
+      "\u001b[1;32m<ipython-input-50-77ff3680966d>\u001b[0m in \u001b[0;36m<module>\u001b[1;34m()\u001b[0m\n\u001b[1;32m----> 1\u001b[1;33m \u001b[0mdf\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mpd\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mread_csv\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;34m'City_Service_Requests_in_2016.csv'\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[1;32mC:\\Users\\Michael\\Anaconda3\\lib\\site-packages\\pandas\\io\\parsers.py\u001b[0m in \u001b[0;36mparser_f\u001b[1;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, escapechar, comment, encoding, dialect, tupleize_cols, error_bad_lines, warn_bad_lines, skipfooter, skip_footer, doublequote, delim_whitespace, as_recarray, compact_ints, use_unsigned, low_memory, buffer_lines, memory_map, float_precision)\u001b[0m\n\u001b[0;32m    653\u001b[0m                     skip_blank_lines=skip_blank_lines)\n\u001b[0;32m    654\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 655\u001b[1;33m         \u001b[1;32mreturn\u001b[0m \u001b[0m_read\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mfilepath_or_buffer\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mkwds\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    656\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    657\u001b[0m     \u001b[0mparser_f\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m__name__\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mname\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mC:\\Users\\Michael\\Anaconda3\\lib\\site-packages\\pandas\\io\\parsers.py\u001b[0m in \u001b[0;36m_read\u001b[1;34m(filepath_or_buffer, kwds)\u001b[0m\n\u001b[0;32m    403\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    404\u001b[0m     \u001b[1;31m# Create the parser.\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 405\u001b[1;33m     \u001b[0mparser\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mTextFileReader\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mfilepath_or_buffer\u001b[0m\u001b[1;33m,\u001b[0m \u001b[1;33m**\u001b[0m\u001b[0mkwds\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    406\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    407\u001b[0m     \u001b[1;32mif\u001b[0m \u001b[0mchunksize\u001b[0m \u001b[1;32mor\u001b[0m \u001b[0miterator\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mC:\\Users\\Michael\\Anaconda3\\lib\\site-packages\\pandas\\io\\parsers.py\u001b[0m in \u001b[0;36m__init__\u001b[1;34m(self, f, engine, **kwds)\u001b[0m\n\u001b[0;32m    760\u001b[0m             \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0moptions\u001b[0m\u001b[1;33m[\u001b[0m\u001b[1;34m'has_index_names'\u001b[0m\u001b[1;33m]\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mkwds\u001b[0m\u001b[1;33m[\u001b[0m\u001b[1;34m'has_index_names'\u001b[0m\u001b[1;33m]\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    761\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 762\u001b[1;33m         \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_make_engine\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mengine\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    763\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    764\u001b[0m     \u001b[1;32mdef\u001b[0m \u001b[0mclose\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mC:\\Users\\Michael\\Anaconda3\\lib\\site-packages\\pandas\\io\\parsers.py\u001b[0m in \u001b[0;36m_make_engine\u001b[1;34m(self, engine)\u001b[0m\n\u001b[0;32m    964\u001b[0m     \u001b[1;32mdef\u001b[0m \u001b[0m_make_engine\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mengine\u001b[0m\u001b[1;33m=\u001b[0m\u001b[1;34m'c'\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    965\u001b[0m         \u001b[1;32mif\u001b[0m \u001b[0mengine\u001b[0m \u001b[1;33m==\u001b[0m \u001b[1;34m'c'\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 966\u001b[1;33m             \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_engine\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mCParserWrapper\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mf\u001b[0m\u001b[1;33m,\u001b[0m \u001b[1;33m**\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0moptions\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    967\u001b[0m         \u001b[1;32melse\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    968\u001b[0m             \u001b[1;32mif\u001b[0m \u001b[0mengine\u001b[0m \u001b[1;33m==\u001b[0m \u001b[1;34m'python'\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mC:\\Users\\Michael\\Anaconda3\\lib\\site-packages\\pandas\\io\\parsers.py\u001b[0m in \u001b[0;36m__init__\u001b[1;34m(self, src, **kwds)\u001b[0m\n\u001b[0;32m   1580\u001b[0m         \u001b[0mkwds\u001b[0m\u001b[1;33m[\u001b[0m\u001b[1;34m'allow_leading_cols'\u001b[0m\u001b[1;33m]\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mindex_col\u001b[0m \u001b[1;32mis\u001b[0m \u001b[1;32mnot\u001b[0m \u001b[1;32mFalse\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m   1581\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m-> 1582\u001b[1;33m         \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_reader\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mparsers\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mTextReader\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0msrc\u001b[0m\u001b[1;33m,\u001b[0m \u001b[1;33m**\u001b[0m\u001b[0mkwds\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m   1583\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m   1584\u001b[0m         \u001b[1;31m# XXX\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mpandas\\_libs\\parsers.pyx\u001b[0m in \u001b[0;36mpandas._libs.parsers.TextReader.__cinit__ (pandas\\_libs\\parsers.c:4209)\u001b[1;34m()\u001b[0m\n",
+      "\u001b[1;32mpandas\\_libs\\parsers.pyx\u001b[0m in \u001b[0;36mpandas._libs.parsers.TextReader._setup_parser_source (pandas\\_libs\\parsers.c:8873)\u001b[1;34m()\u001b[0m\n",
+      "\u001b[1;31mFileNotFoundError\u001b[0m: File b'City_Service_Requests_in_2016.csv' does not exist"
+     ]
+    }
+   ],
+   "source": [
+    "df = pd.read_csv('City_Service_Requests_in_2016.csv')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We can also pull the .csv file directly from the Open Data Portal by using the link."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 51,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "df = pd.read_csv('https://opendata.arcgis.com/datasets/0e4b7d3a83b94a178b3d1f015db901ee_7.csv')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Great! You have the data! \n",
+    "\n",
+    "One of the first things we'd like to know when we're dealing with a data set is its shape; that is the number of rows and columns it has."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(302985, 30)\n"
+     ]
+    }
+   ],
+   "source": [
+    "df.shape\n",
+    "print(df.shape)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This data has 302,925 rows and 30 columns. Generally speaking, rows are our \"observations\" or \"samples\", while columns are our \"variables\" or \"features\". \n",
+    "\n",
+    "Now try getting JUST the number of rows."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "302985"
+      ]
+     },
+     "execution_count": 56,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.shape[0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "When you have an item like this with multiple elements, you can often call the elements by their number. In Python, we always start counting elements with the number '0', so that the first element is always element '0'. \n",
+    "\n",
+    "## Exercise 4\n",
+    "Now try getting the number of columns yourself."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 57,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "30"
+      ]
+     },
+     "execution_count": 57,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.shape[1]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The next thing we may want to do is actually LOOK at the data. But you probably don't want to print out all 300,000 rows of data in your notebook! (In reality, Pandas won't do that. Instead, it will show you a subset of the rows.)\n",
+    "\n",
+    "But to have greater control we can use the head command."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "           X          Y  OBJECTID SERVICECODE  \\\n",
+      "0 -77.068472  38.959221    928367       EMNPV   \n",
+      "1 -77.028858  38.903745    947826       S0276   \n",
+      "2 -77.019418  38.941567    947827       S0361   \n",
+      "3 -77.014655  38.906236    947828     PRUNING   \n",
+      "4 -77.004008  38.835935    947829       S0031   \n",
+      "\n",
+      "              SERVICECODEDESCRIPTION  \\\n",
+      "0  Emergency No-Parking Verification   \n",
+      "1               Parking Meter Repair   \n",
+      "2                    Sidewalk Repair   \n",
+      "3                       Tree Pruning   \n",
+      "4                    Bulk Collection   \n",
+      "\n",
+      "                          SERVICETYPECODEDESCRIPTION ORGANIZATIONACRONYM  \\\n",
+      "0  PEMA- Parking Enforcement Management Administr...                 DPW   \n",
+      "1           Transportation Operations Administration                DDOT   \n",
+      "2                    Toa-Street & Bridge Maintenance                DDOT   \n",
+      "3                                    Urban Forrestry                DDOT   \n",
+      "4          SWMA- Solid Waste Management Admistration                 DPW   \n",
+      "\n",
+      "   SERVICECALLCOUNT                   ADDDATE            RESOLUTIONDATE  \\\n",
+      "0                 1  2016-01-04T16:45:21.000Z  2016-01-04T21:13:04.000Z   \n",
+      "1                 1  2016-05-02T11:43:31.000Z  2016-05-03T01:38:10.000Z   \n",
+      "2                 1  2016-05-02T11:47:49.000Z                       NaN   \n",
+      "3                 1  2016-05-02T10:44:23.000Z  2017-01-19T11:03:08.000Z   \n",
+      "4                 1  2016-05-02T11:49:49.000Z  2016-05-12T14:27:19.000Z   \n",
+      "\n",
+      "                         ...                             XCOORD  \\\n",
+      "0                        ...                          394065.60   \n",
+      "1                        ...                          397497.09   \n",
+      "2                        ...                          398316.79   \n",
+      "3                        ...                          398729.12   \n",
+      "4                        ...                          399652.25   \n",
+      "\n",
+      "          YCOORD   LATITUDE  LONGITUDE        CITY STATE  ZIPCODE  \\\n",
+      "0  143480.700000  38.959214 -77.068470  WASHINGTON    DC  20015.0   \n",
+      "1  137320.600003  38.903738 -77.028856  WASHINGTON    DC  20005.0   \n",
+      "2  141518.950000  38.941560 -77.019416  WASHINGTON    DC  20011.0   \n",
+      "3  137596.790000  38.906229 -77.014652  WASHINGTON    DC  20001.0   \n",
+      "4  129792.780000  38.835928 -77.004005  WASHINGTON    DC  20032.0   \n",
+      "\n",
+      "  MARADDRESSREPOSITORYID WARD  \\\n",
+      "0               262895.0  3.0   \n",
+      "1               812754.0  2.0   \n",
+      "2               247564.0  4.0   \n",
+      "3               238344.0  6.0   \n",
+      "4                66302.0  8.0   \n",
+      "\n",
+      "                                             DETAILS  \n",
+      "0                                                NaN  \n",
+      "1                              Need More Information  \n",
+      "2                                                NaN  \n",
+      "3  By BANUA, SIMOUN: 5/2/2016 12:48:15 PM\\nthis t...  \n",
+      "4  w riggans collected bulk on 5/12/16*closed by ...  \n",
+      "\n",
+      "[5 rows x 30 columns]\n"
+     ]
+    }
+   ],
+   "source": [
+    "df.head()\n",
+    "print (df.head())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercise 11\n",
+    "\n",
+    "The default head command shows us 5 rows. Try increasing the number of rows it shows us."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 60,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "           X          Y  OBJECTID SERVICECODE  \\\n",
+      "0 -77.068472  38.959221    928367       EMNPV   \n",
+      "1 -77.028858  38.903745    947826       S0276   \n",
+      "2 -77.019418  38.941567    947827       S0361   \n",
+      "3 -77.014655  38.906236    947828     PRUNING   \n",
+      "4 -77.004008  38.835935    947829       S0031   \n",
+      "5 -77.004008  38.835935    947830       S0031   \n",
+      "6 -77.020134  38.914935    986620       S0261   \n",
+      "7 -77.018788  38.915155    986621       S0441   \n",
+      "8 -77.018788  38.915155    986622       S0441   \n",
+      "9 -77.011544  38.915718    986623       S0441   \n",
+      "\n",
+      "              SERVICECODEDESCRIPTION  \\\n",
+      "0  Emergency No-Parking Verification   \n",
+      "1               Parking Meter Repair   \n",
+      "2                    Sidewalk Repair   \n",
+      "3                       Tree Pruning   \n",
+      "4                    Bulk Collection   \n",
+      "5                    Bulk Collection   \n",
+      "6                Parking Enforcement   \n",
+      "7          Trash Collection - Missed   \n",
+      "8          Trash Collection - Missed   \n",
+      "9          Trash Collection - Missed   \n",
+      "\n",
+      "                          SERVICETYPECODEDESCRIPTION ORGANIZATIONACRONYM  \\\n",
+      "0  PEMA- Parking Enforcement Management Administr...                 DPW   \n",
+      "1           Transportation Operations Administration                DDOT   \n",
+      "2                    Toa-Street & Bridge Maintenance                DDOT   \n",
+      "3                                    Urban Forrestry                DDOT   \n",
+      "4          SWMA- Solid Waste Management Admistration                 DPW   \n",
+      "5          SWMA- Solid Waste Management Admistration                 DPW   \n",
+      "6  PEMA- Parking Enforcement Management Administr...                 DPW   \n",
+      "7          SWMA- Solid Waste Management Admistration                 DPW   \n",
+      "8          SWMA- Solid Waste Management Admistration                 DPW   \n",
+      "9          SWMA- Solid Waste Management Admistration                 DPW   \n",
+      "\n",
+      "   SERVICECALLCOUNT                   ADDDATE            RESOLUTIONDATE  \\\n",
+      "0                 1  2016-01-04T16:45:21.000Z  2016-01-04T21:13:04.000Z   \n",
+      "1                 1  2016-05-02T11:43:31.000Z  2016-05-03T01:38:10.000Z   \n",
+      "2                 1  2016-05-02T11:47:49.000Z                       NaN   \n",
+      "3                 1  2016-05-02T10:44:23.000Z  2017-01-19T11:03:08.000Z   \n",
+      "4                 1  2016-05-02T11:49:49.000Z  2016-05-12T14:27:19.000Z   \n",
+      "5                 1  2016-05-02T11:49:50.000Z  2016-05-12T14:26:24.000Z   \n",
+      "6                 1  2016-03-16T08:10:25.000Z  2016-03-16T11:01:29.000Z   \n",
+      "7                 1  2016-03-16T08:12:34.000Z  2016-03-18T11:20:03.000Z   \n",
+      "8                 1  2016-03-16T08:12:35.000Z  2016-03-18T11:22:49.000Z   \n",
+      "9                 1  2016-03-16T08:10:29.000Z  2016-03-25T08:13:57.000Z   \n",
+      "\n",
+      "                         ...                             XCOORD  \\\n",
+      "0                        ...                          394065.60   \n",
+      "1                        ...                          397497.09   \n",
+      "2                        ...                          398316.79   \n",
+      "3                        ...                          398729.12   \n",
+      "4                        ...                          399652.25   \n",
+      "5                        ...                          399652.25   \n",
+      "6                        ...                          398254.07   \n",
+      "7                        ...                          398370.81   \n",
+      "8                        ...                          398370.81   \n",
+      "9                        ...                          398999.01   \n",
+      "\n",
+      "          YCOORD   LATITUDE  LONGITUDE        CITY STATE  ZIPCODE  \\\n",
+      "0  143480.700000  38.959214 -77.068470  WASHINGTON    DC  20015.0   \n",
+      "1  137320.600003  38.903738 -77.028856  WASHINGTON    DC  20005.0   \n",
+      "2  141518.950000  38.941560 -77.019416  WASHINGTON    DC  20011.0   \n",
+      "3  137596.790000  38.906229 -77.014652  WASHINGTON    DC  20001.0   \n",
+      "4  129792.780000  38.835928 -77.004005  WASHINGTON    DC  20032.0   \n",
+      "5  129792.780000  38.835928 -77.004005  WASHINGTON    DC  20032.0   \n",
+      "6  138562.500000  38.914927 -77.020132  WASHINGTON    DC  20001.0   \n",
+      "7  138586.890000  38.915147 -77.018786  WASHINGTON    DC  20001.0   \n",
+      "8  138586.890000  38.915147 -77.018786  WASHINGTON    DC  20001.0   \n",
+      "9  138649.350000  38.915711 -77.011542  WASHINGTON    DC  20001.0   \n",
+      "\n",
+      "  MARADDRESSREPOSITORYID WARD  \\\n",
+      "0               262895.0  3.0   \n",
+      "1               812754.0  2.0   \n",
+      "2               247564.0  4.0   \n",
+      "3               238344.0  6.0   \n",
+      "4                66302.0  8.0   \n",
+      "5                66302.0  8.0   \n",
+      "6               238452.0  6.0   \n",
+      "7               229894.0  1.0   \n",
+      "8               229894.0  1.0   \n",
+      "9               300722.0  5.0   \n",
+      "\n",
+      "                                             DETAILS  \n",
+      "0                                                NaN  \n",
+      "1                              Need More Information  \n",
+      "2                                                NaN  \n",
+      "3  By BANUA, SIMOUN: 5/2/2016 12:48:15 PM\\nthis t...  \n",
+      "4  w riggans collected bulk on 5/12/16*closed by ...  \n",
+      "5  w riggans collected bulk on 5/12/16*closed by ...  \n",
+      "6                                                NaN  \n",
+      "7    COMPLETED BY 3/17/16 D STREET CLOSED BY NDAVALL  \n",
+      "8   COMPLETED  BY D STREET 3/17/16 CLOSED BY NDAVALL  \n",
+      "9  COMPLETED  BY L FERGUSON 3/17/16 CLOSED BY NDA...  \n",
+      "\n",
+      "[10 rows x 30 columns]\n"
+     ]
+    }
+   ],
+   "source": [
+    "df.head(10)\n",
+    "print(df.head(10))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This is sort of any annoying way to look at the data, in my opinion. I'm usually interested in looking at the list of columns and the kinds of values they have, so I usually transpose the data when I print it as a head."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 62,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style>\n",
+       "    .dataframe thead tr:only-child th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: left;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>0</th>\n",
+       "      <th>1</th>\n",
+       "      <th>2</th>\n",
+       "      <th>3</th>\n",
+       "      <th>4</th>\n",
+       "      <th>5</th>\n",
+       "      <th>6</th>\n",
+       "      <th>7</th>\n",
+       "      <th>8</th>\n",
+       "      <th>9</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>X</th>\n",
+       "      <td>-77.0685</td>\n",
+       "      <td>-77.0289</td>\n",
+       "      <td>-77.0194</td>\n",
+       "      <td>-77.0147</td>\n",
+       "      <td>-77.004</td>\n",
+       "      <td>-77.004</td>\n",
+       "      <td>-77.0201</td>\n",
+       "      <td>-77.0188</td>\n",
+       "      <td>-77.0188</td>\n",
+       "      <td>-77.0115</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Y</th>\n",
+       "      <td>38.9592</td>\n",
+       "      <td>38.9037</td>\n",
+       "      <td>38.9416</td>\n",
+       "      <td>38.9062</td>\n",
+       "      <td>38.8359</td>\n",
+       "      <td>38.8359</td>\n",
+       "      <td>38.9149</td>\n",
+       "      <td>38.9152</td>\n",
+       "      <td>38.9152</td>\n",
+       "      <td>38.9157</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>OBJECTID</th>\n",
+       "      <td>928367</td>\n",
+       "      <td>947826</td>\n",
+       "      <td>947827</td>\n",
+       "      <td>947828</td>\n",
+       "      <td>947829</td>\n",
+       "      <td>947830</td>\n",
+       "      <td>986620</td>\n",
+       "      <td>986621</td>\n",
+       "      <td>986622</td>\n",
+       "      <td>986623</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>SERVICECODE</th>\n",
+       "      <td>EMNPV</td>\n",
+       "      <td>S0276</td>\n",
+       "      <td>S0361</td>\n",
+       "      <td>PRUNING</td>\n",
+       "      <td>S0031</td>\n",
+       "      <td>S0031</td>\n",
+       "      <td>S0261</td>\n",
+       "      <td>S0441</td>\n",
+       "      <td>S0441</td>\n",
+       "      <td>S0441</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>SERVICECODEDESCRIPTION</th>\n",
+       "      <td>Emergency No-Parking Verification</td>\n",
+       "      <td>Parking Meter Repair</td>\n",
+       "      <td>Sidewalk Repair</td>\n",
+       "      <td>Tree Pruning</td>\n",
+       "      <td>Bulk Collection</td>\n",
+       "      <td>Bulk Collection</td>\n",
+       "      <td>Parking Enforcement</td>\n",
+       "      <td>Trash Collection - Missed</td>\n",
+       "      <td>Trash Collection - Missed</td>\n",
+       "      <td>Trash Collection - Missed</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>SERVICETYPECODEDESCRIPTION</th>\n",
+       "      <td>PEMA- Parking Enforcement Management Administr...</td>\n",
+       "      <td>Transportation Operations Administration</td>\n",
+       "      <td>Toa-Street &amp; Bridge Maintenance</td>\n",
+       "      <td>Urban Forrestry</td>\n",
+       "      <td>SWMA- Solid Waste Management Admistration</td>\n",
+       "      <td>SWMA- Solid Waste Management Admistration</td>\n",
+       "      <td>PEMA- Parking Enforcement Management Administr...</td>\n",
+       "      <td>SWMA- Solid Waste Management Admistration</td>\n",
+       "      <td>SWMA- Solid Waste Management Admistration</td>\n",
+       "      <td>SWMA- Solid Waste Management Admistration</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>ORGANIZATIONACRONYM</th>\n",
+       "      <td>DPW</td>\n",
+       "      <td>DDOT</td>\n",
+       "      <td>DDOT</td>\n",
+       "      <td>DDOT</td>\n",
+       "      <td>DPW</td>\n",
+       "      <td>DPW</td>\n",
+       "      <td>DPW</td>\n",
+       "      <td>DPW</td>\n",
+       "      <td>DPW</td>\n",
+       "      <td>DPW</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>SERVICECALLCOUNT</th>\n",
+       "      <td>1</td>\n",
+       "      <td>1</td>\n",
+       "      <td>1</td>\n",
+       "      <td>1</td>\n",
+       "      <td>1</td>\n",
+       "      <td>1</td>\n",
+       "      <td>1</td>\n",
+       "      <td>1</td>\n",
+       "      <td>1</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>ADDDATE</th>\n",
+       "      <td>2016-01-04T16:45:21.000Z</td>\n",
+       "      <td>2016-05-02T11:43:31.000Z</td>\n",
+       "      <td>2016-05-02T11:47:49.000Z</td>\n",
+       "      <td>2016-05-02T10:44:23.000Z</td>\n",
+       "      <td>2016-05-02T11:49:49.000Z</td>\n",
+       "      <td>2016-05-02T11:49:50.000Z</td>\n",
+       "      <td>2016-03-16T08:10:25.000Z</td>\n",
+       "      <td>2016-03-16T08:12:34.000Z</td>\n",
+       "      <td>2016-03-16T08:12:35.000Z</td>\n",
+       "      <td>2016-03-16T08:10:29.000Z</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>RESOLUTIONDATE</th>\n",
+       "      <td>2016-01-04T21:13:04.000Z</td>\n",
+       "      <td>2016-05-03T01:38:10.000Z</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>2017-01-19T11:03:08.000Z</td>\n",
+       "      <td>2016-05-12T14:27:19.000Z</td>\n",
+       "      <td>2016-05-12T14:26:24.000Z</td>\n",
+       "      <td>2016-03-16T11:01:29.000Z</td>\n",
+       "      <td>2016-03-18T11:20:03.000Z</td>\n",
+       "      <td>2016-03-18T11:22:49.000Z</td>\n",
+       "      <td>2016-03-25T08:13:57.000Z</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>SERVICEDUEDATE</th>\n",
+       "      <td>2016-01-05T16:45:00.000Z</td>\n",
+       "      <td>2016-05-09T11:43:00.000Z</td>\n",
+       "      <td>2016-09-20T11:47:00.000Z</td>\n",
+       "      <td>2017-05-31T10:44:00.000Z</td>\n",
+       "      <td>2016-05-20T11:49:00.000Z</td>\n",
+       "      <td>2016-05-20T11:49:00.000Z</td>\n",
+       "      <td>2016-03-16T17:00:00.000Z</td>\n",
+       "      <td>2016-03-17T17:00:00.000Z</td>\n",
+       "      <td>2016-03-17T17:00:00.000Z</td>\n",
+       "      <td>2016-03-17T17:00:00.000Z</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>SERVICEORDERDATE</th>\n",
+       "      <td>2016-01-04T16:45:21.000Z</td>\n",
+       "      <td>2016-05-02T11:43:31.000Z</td>\n",
+       "      <td>2016-05-02T11:47:49.000Z</td>\n",
+       "      <td>2016-05-02T10:44:23.000Z</td>\n",
+       "      <td>2016-05-02T11:49:49.000Z</td>\n",
+       "      <td>2016-05-02T11:49:50.000Z</td>\n",
+       "      <td>2016-03-16T08:10:25.000Z</td>\n",
+       "      <td>2016-03-16T08:12:34.000Z</td>\n",
+       "      <td>2016-03-16T08:12:35.000Z</td>\n",
+       "      <td>2016-03-16T08:10:29.000Z</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>INSPECTIONFLAG</th>\n",
+       "      <td>N</td>\n",
+       "      <td>N</td>\n",
+       "      <td>N</td>\n",
+       "      <td>N</td>\n",
+       "      <td>N</td>\n",
+       "      <td>N</td>\n",
+       "      <td>N</td>\n",
+       "      <td>N</td>\n",
+       "      <td>N</td>\n",
+       "      <td>N</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>INSPECTIONDATE</th>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>INSPECTORNAME</th>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>SERVICEORDERSTATUS</th>\n",
+       "      <td>CLOSED</td>\n",
+       "      <td>CLOSED</td>\n",
+       "      <td>IN-PROGRESS</td>\n",
+       "      <td>CLOSED</td>\n",
+       "      <td>CLOSED</td>\n",
+       "      <td>CLOSED</td>\n",
+       "      <td>CLOSED</td>\n",
+       "      <td>CLOSED</td>\n",
+       "      <td>CLOSED</td>\n",
+       "      <td>CLOSED</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>STATUS_CODE</th>\n",
+       "      <td>CLOSED</td>\n",
+       "      <td>CLOSED</td>\n",
+       "      <td>OPEN</td>\n",
+       "      <td>CLOSED</td>\n",
+       "      <td>CLOSED</td>\n",
+       "      <td>CLOSED</td>\n",
+       "      <td>CLOSED</td>\n",
+       "      <td>CLOSED</td>\n",
+       "      <td>CLOSED</td>\n",
+       "      <td>CLOSED</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>SERVICEREQUESTID</th>\n",
+       "      <td>16-00353175</td>\n",
+       "      <td>16-00485849</td>\n",
+       "      <td>16-00485860</td>\n",
+       "      <td>16-00485852</td>\n",
+       "      <td>16-00485867</td>\n",
+       "      <td>16-00485868</td>\n",
+       "      <td>16-00426788</td>\n",
+       "      <td>16-00426791</td>\n",
+       "      <td>16-00426792</td>\n",
+       "      <td>16-00426789</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>PRIORITY</th>\n",
+       "      <td>STANDARD</td>\n",
+       "      <td>STANDARD</td>\n",
+       "      <td>STANDARD</td>\n",
+       "      <td>STANDARD</td>\n",
+       "      <td>STANDARD</td>\n",
+       "      <td>STANDARD</td>\n",
+       "      <td>STANDARD</td>\n",
+       "      <td>STANDARD</td>\n",
+       "      <td>STANDARD</td>\n",
+       "      <td>STANDARD</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>STREETADDRESS</th>\n",
+       "      <td>3611 JENIFER STREET NW</td>\n",
+       "      <td>1200 - 1299 BLOCK OF L STREET NW</td>\n",
+       "      <td>4120 5TH STREET NW</td>\n",
+       "      <td>1219 NEW JERSEY AVENUE NW</td>\n",
+       "      <td>135 WILMINGTON PLACE SE</td>\n",
+       "      <td>135 WILMINGTON PLACE SE</td>\n",
+       "      <td>1824 6TH STREET NW</td>\n",
+       "      <td>509 FLORIDA AVENUE NW</td>\n",
+       "      <td>509 FLORIDA AVENUE NW</td>\n",
+       "      <td>84 RHODE ISLAND AVENUE NW</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>XCOORD</th>\n",
+       "      <td>394066</td>\n",
+       "      <td>397497</td>\n",
+       "      <td>398317</td>\n",
+       "      <td>398729</td>\n",
+       "      <td>399652</td>\n",
+       "      <td>399652</td>\n",
+       "      <td>398254</td>\n",
+       "      <td>398371</td>\n",
+       "      <td>398371</td>\n",
+       "      <td>398999</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>YCOORD</th>\n",
+       "      <td>143481</td>\n",
+       "      <td>137321</td>\n",
+       "      <td>141519</td>\n",
+       "      <td>137597</td>\n",
+       "      <td>129793</td>\n",
+       "      <td>129793</td>\n",
+       "      <td>138562</td>\n",
+       "      <td>138587</td>\n",
+       "      <td>138587</td>\n",
+       "      <td>138649</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>LATITUDE</th>\n",
+       "      <td>38.9592</td>\n",
+       "      <td>38.9037</td>\n",
+       "      <td>38.9416</td>\n",
+       "      <td>38.9062</td>\n",
+       "      <td>38.8359</td>\n",
+       "      <td>38.8359</td>\n",
+       "      <td>38.9149</td>\n",
+       "      <td>38.9151</td>\n",
+       "      <td>38.9151</td>\n",
+       "      <td>38.9157</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>LONGITUDE</th>\n",
+       "      <td>-77.0685</td>\n",
+       "      <td>-77.0289</td>\n",
+       "      <td>-77.0194</td>\n",
+       "      <td>-77.0147</td>\n",
+       "      <td>-77.004</td>\n",
+       "      <td>-77.004</td>\n",
+       "      <td>-77.0201</td>\n",
+       "      <td>-77.0188</td>\n",
+       "      <td>-77.0188</td>\n",
+       "      <td>-77.0115</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>CITY</th>\n",
+       "      <td>WASHINGTON</td>\n",
+       "      <td>WASHINGTON</td>\n",
+       "      <td>WASHINGTON</td>\n",
+       "      <td>WASHINGTON</td>\n",
+       "      <td>WASHINGTON</td>\n",
+       "      <td>WASHINGTON</td>\n",
+       "      <td>WASHINGTON</td>\n",
+       "      <td>WASHINGTON</td>\n",
+       "      <td>WASHINGTON</td>\n",
+       "      <td>WASHINGTON</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>STATE</th>\n",
+       "      <td>DC</td>\n",
+       "      <td>DC</td>\n",
+       "      <td>DC</td>\n",
+       "      <td>DC</td>\n",
+       "      <td>DC</td>\n",
+       "      <td>DC</td>\n",
+       "      <td>DC</td>\n",
+       "      <td>DC</td>\n",
+       "      <td>DC</td>\n",
+       "      <td>DC</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>ZIPCODE</th>\n",
+       "      <td>20015</td>\n",
+       "      <td>20005</td>\n",
+       "      <td>20011</td>\n",
+       "      <td>20001</td>\n",
+       "      <td>20032</td>\n",
+       "      <td>20032</td>\n",
+       "      <td>20001</td>\n",
+       "      <td>20001</td>\n",
+       "      <td>20001</td>\n",
+       "      <td>20001</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>MARADDRESSREPOSITORYID</th>\n",
+       "      <td>262895</td>\n",
+       "      <td>812754</td>\n",
+       "      <td>247564</td>\n",
+       "      <td>238344</td>\n",
+       "      <td>66302</td>\n",
+       "      <td>66302</td>\n",
+       "      <td>238452</td>\n",
+       "      <td>229894</td>\n",
+       "      <td>229894</td>\n",
+       "      <td>300722</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>WARD</th>\n",
+       "      <td>3</td>\n",
+       "      <td>2</td>\n",
+       "      <td>4</td>\n",
+       "      <td>6</td>\n",
+       "      <td>8</td>\n",
+       "      <td>8</td>\n",
+       "      <td>6</td>\n",
+       "      <td>1</td>\n",
+       "      <td>1</td>\n",
+       "      <td>5</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>DETAILS</th>\n",
+       "      <td>NaN</td>\n",
+       "      <td>Need More Information</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>By BANUA, SIMOUN: 5/2/2016 12:48:15 PM\\nthis t...</td>\n",
+       "      <td>w riggans collected bulk on 5/12/16*closed by ...</td>\n",
+       "      <td>w riggans collected bulk on 5/12/16*closed by ...</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>COMPLETED BY 3/17/16 D STREET CLOSED BY NDAVALL</td>\n",
+       "      <td>COMPLETED  BY D STREET 3/17/16 CLOSED BY NDAVALL</td>\n",
+       "      <td>COMPLETED  BY L FERGUSON 3/17/16 CLOSED BY NDA...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "                                                                            0  \\\n",
+       "X                                                                    -77.0685   \n",
+       "Y                                                                     38.9592   \n",
+       "OBJECTID                                                               928367   \n",
+       "SERVICECODE                                                             EMNPV   \n",
+       "SERVICECODEDESCRIPTION                      Emergency No-Parking Verification   \n",
+       "SERVICETYPECODEDESCRIPTION  PEMA- Parking Enforcement Management Administr...   \n",
+       "ORGANIZATIONACRONYM                                                       DPW   \n",
+       "SERVICECALLCOUNT                                                            1   \n",
+       "ADDDATE                                              2016-01-04T16:45:21.000Z   \n",
+       "RESOLUTIONDATE                                       2016-01-04T21:13:04.000Z   \n",
+       "SERVICEDUEDATE                                       2016-01-05T16:45:00.000Z   \n",
+       "SERVICEORDERDATE                                     2016-01-04T16:45:21.000Z   \n",
+       "INSPECTIONFLAG                                                              N   \n",
+       "INSPECTIONDATE                                                            NaN   \n",
+       "INSPECTORNAME                                                             NaN   \n",
+       "SERVICEORDERSTATUS                                                     CLOSED   \n",
+       "STATUS_CODE                                                            CLOSED   \n",
+       "SERVICEREQUESTID                                                  16-00353175   \n",
+       "PRIORITY                                                             STANDARD   \n",
+       "STREETADDRESS                                          3611 JENIFER STREET NW   \n",
+       "XCOORD                                                                 394066   \n",
+       "YCOORD                                                                 143481   \n",
+       "LATITUDE                                                              38.9592   \n",
+       "LONGITUDE                                                            -77.0685   \n",
+       "CITY                                                               WASHINGTON   \n",
+       "STATE                                                                      DC   \n",
+       "ZIPCODE                                                                 20015   \n",
+       "MARADDRESSREPOSITORYID                                                 262895   \n",
+       "WARD                                                                        3   \n",
+       "DETAILS                                                                   NaN   \n",
+       "\n",
+       "                                                                   1  \\\n",
+       "X                                                           -77.0289   \n",
+       "Y                                                            38.9037   \n",
+       "OBJECTID                                                      947826   \n",
+       "SERVICECODE                                                    S0276   \n",
+       "SERVICECODEDESCRIPTION                          Parking Meter Repair   \n",
+       "SERVICETYPECODEDESCRIPTION  Transportation Operations Administration   \n",
+       "ORGANIZATIONACRONYM                                             DDOT   \n",
+       "SERVICECALLCOUNT                                                   1   \n",
+       "ADDDATE                                     2016-05-02T11:43:31.000Z   \n",
+       "RESOLUTIONDATE                              2016-05-03T01:38:10.000Z   \n",
+       "SERVICEDUEDATE                              2016-05-09T11:43:00.000Z   \n",
+       "SERVICEORDERDATE                            2016-05-02T11:43:31.000Z   \n",
+       "INSPECTIONFLAG                                                     N   \n",
+       "INSPECTIONDATE                                                   NaN   \n",
+       "INSPECTORNAME                                                    NaN   \n",
+       "SERVICEORDERSTATUS                                            CLOSED   \n",
+       "STATUS_CODE                                                   CLOSED   \n",
+       "SERVICEREQUESTID                                         16-00485849   \n",
+       "PRIORITY                                                    STANDARD   \n",
+       "STREETADDRESS                       1200 - 1299 BLOCK OF L STREET NW   \n",
+       "XCOORD                                                        397497   \n",
+       "YCOORD                                                        137321   \n",
+       "LATITUDE                                                     38.9037   \n",
+       "LONGITUDE                                                   -77.0289   \n",
+       "CITY                                                      WASHINGTON   \n",
+       "STATE                                                             DC   \n",
+       "ZIPCODE                                                        20005   \n",
+       "MARADDRESSREPOSITORYID                                        812754   \n",
+       "WARD                                                               2   \n",
+       "DETAILS                                        Need More Information   \n",
+       "\n",
+       "                                                          2  \\\n",
+       "X                                                  -77.0194   \n",
+       "Y                                                   38.9416   \n",
+       "OBJECTID                                             947827   \n",
+       "SERVICECODE                                           S0361   \n",
+       "SERVICECODEDESCRIPTION                      Sidewalk Repair   \n",
+       "SERVICETYPECODEDESCRIPTION  Toa-Street & Bridge Maintenance   \n",
+       "ORGANIZATIONACRONYM                                    DDOT   \n",
+       "SERVICECALLCOUNT                                          1   \n",
+       "ADDDATE                            2016-05-02T11:47:49.000Z   \n",
+       "RESOLUTIONDATE                                          NaN   \n",
+       "SERVICEDUEDATE                     2016-09-20T11:47:00.000Z   \n",
+       "SERVICEORDERDATE                   2016-05-02T11:47:49.000Z   \n",
+       "INSPECTIONFLAG                                            N   \n",
+       "INSPECTIONDATE                                          NaN   \n",
+       "INSPECTORNAME                                           NaN   \n",
+       "SERVICEORDERSTATUS                              IN-PROGRESS   \n",
+       "STATUS_CODE                                            OPEN   \n",
+       "SERVICEREQUESTID                                16-00485860   \n",
+       "PRIORITY                                           STANDARD   \n",
+       "STREETADDRESS                            4120 5TH STREET NW   \n",
+       "XCOORD                                               398317   \n",
+       "YCOORD                                               141519   \n",
+       "LATITUDE                                            38.9416   \n",
+       "LONGITUDE                                          -77.0194   \n",
+       "CITY                                             WASHINGTON   \n",
+       "STATE                                                    DC   \n",
+       "ZIPCODE                                               20011   \n",
+       "MARADDRESSREPOSITORYID                               247564   \n",
+       "WARD                                                      4   \n",
+       "DETAILS                                                 NaN   \n",
+       "\n",
+       "                                                                            3  \\\n",
+       "X                                                                    -77.0147   \n",
+       "Y                                                                     38.9062   \n",
+       "OBJECTID                                                               947828   \n",
+       "SERVICECODE                                                           PRUNING   \n",
+       "SERVICECODEDESCRIPTION                                           Tree Pruning   \n",
+       "SERVICETYPECODEDESCRIPTION                                    Urban Forrestry   \n",
+       "ORGANIZATIONACRONYM                                                      DDOT   \n",
+       "SERVICECALLCOUNT                                                            1   \n",
+       "ADDDATE                                              2016-05-02T10:44:23.000Z   \n",
+       "RESOLUTIONDATE                                       2017-01-19T11:03:08.000Z   \n",
+       "SERVICEDUEDATE                                       2017-05-31T10:44:00.000Z   \n",
+       "SERVICEORDERDATE                                     2016-05-02T10:44:23.000Z   \n",
+       "INSPECTIONFLAG                                                              N   \n",
+       "INSPECTIONDATE                                                            NaN   \n",
+       "INSPECTORNAME                                                             NaN   \n",
+       "SERVICEORDERSTATUS                                                     CLOSED   \n",
+       "STATUS_CODE                                                            CLOSED   \n",
+       "SERVICEREQUESTID                                                  16-00485852   \n",
+       "PRIORITY                                                             STANDARD   \n",
+       "STREETADDRESS                                       1219 NEW JERSEY AVENUE NW   \n",
+       "XCOORD                                                                 398729   \n",
+       "YCOORD                                                                 137597   \n",
+       "LATITUDE                                                              38.9062   \n",
+       "LONGITUDE                                                            -77.0147   \n",
+       "CITY                                                               WASHINGTON   \n",
+       "STATE                                                                      DC   \n",
+       "ZIPCODE                                                                 20001   \n",
+       "MARADDRESSREPOSITORYID                                                 238344   \n",
+       "WARD                                                                        6   \n",
+       "DETAILS                     By BANUA, SIMOUN: 5/2/2016 12:48:15 PM\\nthis t...   \n",
+       "\n",
+       "                                                                            4  \\\n",
+       "X                                                                     -77.004   \n",
+       "Y                                                                     38.8359   \n",
+       "OBJECTID                                                               947829   \n",
+       "SERVICECODE                                                             S0031   \n",
+       "SERVICECODEDESCRIPTION                                        Bulk Collection   \n",
+       "SERVICETYPECODEDESCRIPTION          SWMA- Solid Waste Management Admistration   \n",
+       "ORGANIZATIONACRONYM                                                       DPW   \n",
+       "SERVICECALLCOUNT                                                            1   \n",
+       "ADDDATE                                              2016-05-02T11:49:49.000Z   \n",
+       "RESOLUTIONDATE                                       2016-05-12T14:27:19.000Z   \n",
+       "SERVICEDUEDATE                                       2016-05-20T11:49:00.000Z   \n",
+       "SERVICEORDERDATE                                     2016-05-02T11:49:49.000Z   \n",
+       "INSPECTIONFLAG                                                              N   \n",
+       "INSPECTIONDATE                                                            NaN   \n",
+       "INSPECTORNAME                                                             NaN   \n",
+       "SERVICEORDERSTATUS                                                     CLOSED   \n",
+       "STATUS_CODE                                                            CLOSED   \n",
+       "SERVICEREQUESTID                                                  16-00485867   \n",
+       "PRIORITY                                                             STANDARD   \n",
+       "STREETADDRESS                                         135 WILMINGTON PLACE SE   \n",
+       "XCOORD                                                                 399652   \n",
+       "YCOORD                                                                 129793   \n",
+       "LATITUDE                                                              38.8359   \n",
+       "LONGITUDE                                                             -77.004   \n",
+       "CITY                                                               WASHINGTON   \n",
+       "STATE                                                                      DC   \n",
+       "ZIPCODE                                                                 20032   \n",
+       "MARADDRESSREPOSITORYID                                                  66302   \n",
+       "WARD                                                                        8   \n",
+       "DETAILS                     w riggans collected bulk on 5/12/16*closed by ...   \n",
+       "\n",
+       "                                                                            5  \\\n",
+       "X                                                                     -77.004   \n",
+       "Y                                                                     38.8359   \n",
+       "OBJECTID                                                               947830   \n",
+       "SERVICECODE                                                             S0031   \n",
+       "SERVICECODEDESCRIPTION                                        Bulk Collection   \n",
+       "SERVICETYPECODEDESCRIPTION          SWMA- Solid Waste Management Admistration   \n",
+       "ORGANIZATIONACRONYM                                                       DPW   \n",
+       "SERVICECALLCOUNT                                                            1   \n",
+       "ADDDATE                                              2016-05-02T11:49:50.000Z   \n",
+       "RESOLUTIONDATE                                       2016-05-12T14:26:24.000Z   \n",
+       "SERVICEDUEDATE                                       2016-05-20T11:49:00.000Z   \n",
+       "SERVICEORDERDATE                                     2016-05-02T11:49:50.000Z   \n",
+       "INSPECTIONFLAG                                                              N   \n",
+       "INSPECTIONDATE                                                            NaN   \n",
+       "INSPECTORNAME                                                             NaN   \n",
+       "SERVICEORDERSTATUS                                                     CLOSED   \n",
+       "STATUS_CODE                                                            CLOSED   \n",
+       "SERVICEREQUESTID                                                  16-00485868   \n",
+       "PRIORITY                                                             STANDARD   \n",
+       "STREETADDRESS                                         135 WILMINGTON PLACE SE   \n",
+       "XCOORD                                                                 399652   \n",
+       "YCOORD                                                                 129793   \n",
+       "LATITUDE                                                              38.8359   \n",
+       "LONGITUDE                                                             -77.004   \n",
+       "CITY                                                               WASHINGTON   \n",
+       "STATE                                                                      DC   \n",
+       "ZIPCODE                                                                 20032   \n",
+       "MARADDRESSREPOSITORYID                                                  66302   \n",
+       "WARD                                                                        8   \n",
+       "DETAILS                     w riggans collected bulk on 5/12/16*closed by ...   \n",
+       "\n",
+       "                                                                            6  \\\n",
+       "X                                                                    -77.0201   \n",
+       "Y                                                                     38.9149   \n",
+       "OBJECTID                                                               986620   \n",
+       "SERVICECODE                                                             S0261   \n",
+       "SERVICECODEDESCRIPTION                                    Parking Enforcement   \n",
+       "SERVICETYPECODEDESCRIPTION  PEMA- Parking Enforcement Management Administr...   \n",
+       "ORGANIZATIONACRONYM                                                       DPW   \n",
+       "SERVICECALLCOUNT                                                            1   \n",
+       "ADDDATE                                              2016-03-16T08:10:25.000Z   \n",
+       "RESOLUTIONDATE                                       2016-03-16T11:01:29.000Z   \n",
+       "SERVICEDUEDATE                                       2016-03-16T17:00:00.000Z   \n",
+       "SERVICEORDERDATE                                     2016-03-16T08:10:25.000Z   \n",
+       "INSPECTIONFLAG                                                              N   \n",
+       "INSPECTIONDATE                                                            NaN   \n",
+       "INSPECTORNAME                                                             NaN   \n",
+       "SERVICEORDERSTATUS                                                     CLOSED   \n",
+       "STATUS_CODE                                                            CLOSED   \n",
+       "SERVICEREQUESTID                                                  16-00426788   \n",
+       "PRIORITY                                                             STANDARD   \n",
+       "STREETADDRESS                                              1824 6TH STREET NW   \n",
+       "XCOORD                                                                 398254   \n",
+       "YCOORD                                                                 138562   \n",
+       "LATITUDE                                                              38.9149   \n",
+       "LONGITUDE                                                            -77.0201   \n",
+       "CITY                                                               WASHINGTON   \n",
+       "STATE                                                                      DC   \n",
+       "ZIPCODE                                                                 20001   \n",
+       "MARADDRESSREPOSITORYID                                                 238452   \n",
+       "WARD                                                                        6   \n",
+       "DETAILS                                                                   NaN   \n",
+       "\n",
+       "                                                                          7  \\\n",
+       "X                                                                  -77.0188   \n",
+       "Y                                                                   38.9152   \n",
+       "OBJECTID                                                             986621   \n",
+       "SERVICECODE                                                           S0441   \n",
+       "SERVICECODEDESCRIPTION                            Trash Collection - Missed   \n",
+       "SERVICETYPECODEDESCRIPTION        SWMA- Solid Waste Management Admistration   \n",
+       "ORGANIZATIONACRONYM                                                     DPW   \n",
+       "SERVICECALLCOUNT                                                          1   \n",
+       "ADDDATE                                            2016-03-16T08:12:34.000Z   \n",
+       "RESOLUTIONDATE                                     2016-03-18T11:20:03.000Z   \n",
+       "SERVICEDUEDATE                                     2016-03-17T17:00:00.000Z   \n",
+       "SERVICEORDERDATE                                   2016-03-16T08:12:34.000Z   \n",
+       "INSPECTIONFLAG                                                            N   \n",
+       "INSPECTIONDATE                                                          NaN   \n",
+       "INSPECTORNAME                                                           NaN   \n",
+       "SERVICEORDERSTATUS                                                   CLOSED   \n",
+       "STATUS_CODE                                                          CLOSED   \n",
+       "SERVICEREQUESTID                                                16-00426791   \n",
+       "PRIORITY                                                           STANDARD   \n",
+       "STREETADDRESS                                         509 FLORIDA AVENUE NW   \n",
+       "XCOORD                                                               398371   \n",
+       "YCOORD                                                               138587   \n",
+       "LATITUDE                                                            38.9151   \n",
+       "LONGITUDE                                                          -77.0188   \n",
+       "CITY                                                             WASHINGTON   \n",
+       "STATE                                                                    DC   \n",
+       "ZIPCODE                                                               20001   \n",
+       "MARADDRESSREPOSITORYID                                               229894   \n",
+       "WARD                                                                      1   \n",
+       "DETAILS                     COMPLETED BY 3/17/16 D STREET CLOSED BY NDAVALL   \n",
+       "\n",
+       "                                                                           8  \\\n",
+       "X                                                                   -77.0188   \n",
+       "Y                                                                    38.9152   \n",
+       "OBJECTID                                                              986622   \n",
+       "SERVICECODE                                                            S0441   \n",
+       "SERVICECODEDESCRIPTION                             Trash Collection - Missed   \n",
+       "SERVICETYPECODEDESCRIPTION         SWMA- Solid Waste Management Admistration   \n",
+       "ORGANIZATIONACRONYM                                                      DPW   \n",
+       "SERVICECALLCOUNT                                                           1   \n",
+       "ADDDATE                                             2016-03-16T08:12:35.000Z   \n",
+       "RESOLUTIONDATE                                      2016-03-18T11:22:49.000Z   \n",
+       "SERVICEDUEDATE                                      2016-03-17T17:00:00.000Z   \n",
+       "SERVICEORDERDATE                                    2016-03-16T08:12:35.000Z   \n",
+       "INSPECTIONFLAG                                                             N   \n",
+       "INSPECTIONDATE                                                           NaN   \n",
+       "INSPECTORNAME                                                            NaN   \n",
+       "SERVICEORDERSTATUS                                                    CLOSED   \n",
+       "STATUS_CODE                                                           CLOSED   \n",
+       "SERVICEREQUESTID                                                 16-00426792   \n",
+       "PRIORITY                                                            STANDARD   \n",
+       "STREETADDRESS                                          509 FLORIDA AVENUE NW   \n",
+       "XCOORD                                                                398371   \n",
+       "YCOORD                                                                138587   \n",
+       "LATITUDE                                                             38.9151   \n",
+       "LONGITUDE                                                           -77.0188   \n",
+       "CITY                                                              WASHINGTON   \n",
+       "STATE                                                                     DC   \n",
+       "ZIPCODE                                                                20001   \n",
+       "MARADDRESSREPOSITORYID                                                229894   \n",
+       "WARD                                                                       1   \n",
+       "DETAILS                     COMPLETED  BY D STREET 3/17/16 CLOSED BY NDAVALL   \n",
+       "\n",
+       "                                                                            9  \n",
+       "X                                                                    -77.0115  \n",
+       "Y                                                                     38.9157  \n",
+       "OBJECTID                                                               986623  \n",
+       "SERVICECODE                                                             S0441  \n",
+       "SERVICECODEDESCRIPTION                              Trash Collection - Missed  \n",
+       "SERVICETYPECODEDESCRIPTION          SWMA- Solid Waste Management Admistration  \n",
+       "ORGANIZATIONACRONYM                                                       DPW  \n",
+       "SERVICECALLCOUNT                                                            1  \n",
+       "ADDDATE                                              2016-03-16T08:10:29.000Z  \n",
+       "RESOLUTIONDATE                                       2016-03-25T08:13:57.000Z  \n",
+       "SERVICEDUEDATE                                       2016-03-17T17:00:00.000Z  \n",
+       "SERVICEORDERDATE                                     2016-03-16T08:10:29.000Z  \n",
+       "INSPECTIONFLAG                                                              N  \n",
+       "INSPECTIONDATE                                                            NaN  \n",
+       "INSPECTORNAME                                                             NaN  \n",
+       "SERVICEORDERSTATUS                                                     CLOSED  \n",
+       "STATUS_CODE                                                            CLOSED  \n",
+       "SERVICEREQUESTID                                                  16-00426789  \n",
+       "PRIORITY                                                             STANDARD  \n",
+       "STREETADDRESS                                       84 RHODE ISLAND AVENUE NW  \n",
+       "XCOORD                                                                 398999  \n",
+       "YCOORD                                                                 138649  \n",
+       "LATITUDE                                                              38.9157  \n",
+       "LONGITUDE                                                            -77.0115  \n",
+       "CITY                                                               WASHINGTON  \n",
+       "STATE                                                                      DC  \n",
+       "ZIPCODE                                                                 20001  \n",
+       "MARADDRESSREPOSITORYID                                                 300722  \n",
+       "WARD                                                                        5  \n",
+       "DETAILS                     COMPLETED  BY L FERGUSON 3/17/16 CLOSED BY NDA...  "
+      ]
+     },
+     "execution_count": 62,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.head(10).T"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now you can get a sense of what your data looks like. What do you think some of these columns mean?\n",
+    "\n",
+    "## Exercise 12\n",
+    "\n",
+    "Think about some of the column names and values you have. What do you think these columns are?\n",
+    "\n",
+    "We probably want even more information about our variables or columns, so let's learn more about them.\n",
+    "\n",
+    "First, we can get a quick list of column names this way also."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 64,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Index(['X', 'Y', 'OBJECTID', 'SERVICECODE', 'SERVICECODEDESCRIPTION',\n",
+      "       'SERVICETYPECODEDESCRIPTION', 'ORGANIZATIONACRONYM', 'SERVICECALLCOUNT',\n",
+      "       'ADDDATE', 'RESOLUTIONDATE', 'SERVICEDUEDATE', 'SERVICEORDERDATE',\n",
+      "       'INSPECTIONFLAG', 'INSPECTIONDATE', 'INSPECTORNAME',\n",
+      "       'SERVICEORDERSTATUS', 'STATUS_CODE', 'SERVICEREQUESTID', 'PRIORITY',\n",
+      "       'STREETADDRESS', 'XCOORD', 'YCOORD', 'LATITUDE', 'LONGITUDE', 'CITY',\n",
+      "       'STATE', 'ZIPCODE', 'MARADDRESSREPOSITORYID', 'WARD', 'DETAILS'],\n",
+      "      dtype='object')\n"
+     ]
+    }
+   ],
+   "source": [
+    "df.columns"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The columns command provides us with a list of column names.\n",
+    "\n",
+    "We can also use this command to find out how many columns we have by taking its length."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 65,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "30"
+      ]
+     },
+     "execution_count": 65,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "len(df.columns)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Note that this returns the same value as df.shape[1].\n",
+    "\n",
+    "We can also get column data types."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 66,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "X                             float64\n",
+       "Y                             float64\n",
+       "OBJECTID                        int64\n",
+       "SERVICECODE                    object\n",
+       "SERVICECODEDESCRIPTION         object\n",
+       "SERVICETYPECODEDESCRIPTION     object\n",
+       "ORGANIZATIONACRONYM            object\n",
+       "SERVICECALLCOUNT                int64\n",
+       "ADDDATE                        object\n",
+       "RESOLUTIONDATE                 object\n",
+       "SERVICEDUEDATE                 object\n",
+       "SERVICEORDERDATE               object\n",
+       "INSPECTIONFLAG                 object\n",
+       "INSPECTIONDATE                 object\n",
+       "INSPECTORNAME                 float64\n",
+       "SERVICEORDERSTATUS             object\n",
+       "STATUS_CODE                    object\n",
+       "SERVICEREQUESTID               object\n",
+       "PRIORITY                       object\n",
+       "STREETADDRESS                  object\n",
+       "XCOORD                        float64\n",
+       "YCOORD                        float64\n",
+       "LATITUDE                      float64\n",
+       "LONGITUDE                     float64\n",
+       "CITY                           object\n",
+       "STATE                          object\n",
+       "ZIPCODE                       float64\n",
+       "MARADDRESSREPOSITORYID        float64\n",
+       "WARD                          float64\n",
+       "DETAILS                        object\n",
+       "dtype: object"
+      ]
+     },
+     "execution_count": 66,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.dtypes"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We see three data types here. What does each mean? Why aren't there any \"date\" types?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercise 13\n",
+    "\n",
+    "We'd like to know even more about our data.\n",
+    "\n",
+    "Use the describe function to learn more about your data. I like to transpose this, too. Try transposing it.\n",
+    "\n",
+    "Do you notice any columns missing from the output? Why do you think they're missing?\n",
+    "\n",
+    "You may notice some values are 'NaN'. What does that mean? How might we handle these values?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 70,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style>\n",
+       "    .dataframe thead tr:only-child th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: left;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>count</th>\n",
+       "      <th>mean</th>\n",
+       "      <th>std</th>\n",
+       "      <th>min</th>\n",
+       "      <th>25%</th>\n",
+       "      <th>50%</th>\n",
+       "      <th>75%</th>\n",
+       "      <th>max</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>X</th>\n",
+       "      <td>302985.0</td>\n",
+       "      <td>-7.701344e+01</td>\n",
+       "      <td>0.037492</td>\n",
+       "      <td>-77.114209</td>\n",
+       "      <td>-7.703655e+01</td>\n",
+       "      <td>-7.701731e+01</td>\n",
+       "      <td>-7.698978e+01</td>\n",
+       "      <td>-7.690953e+01</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Y</th>\n",
+       "      <td>302985.0</td>\n",
+       "      <td>3.891196e+01</td>\n",
+       "      <td>0.031257</td>\n",
+       "      <td>38.813455</td>\n",
+       "      <td>3.889461e+01</td>\n",
+       "      <td>3.890972e+01</td>\n",
+       "      <td>3.893308e+01</td>\n",
+       "      <td>3.899544e+01</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>OBJECTID</th>\n",
+       "      <td>302985.0</td>\n",
+       "      <td>1.335995e+06</td>\n",
+       "      <td>102371.072802</td>\n",
+       "      <td>928367.000000</td>\n",
+       "      <td>1.264323e+06</td>\n",
+       "      <td>1.340839e+06</td>\n",
+       "      <td>1.417109e+06</td>\n",
+       "      <td>1.566462e+06</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>SERVICECALLCOUNT</th>\n",
+       "      <td>302985.0</td>\n",
+       "      <td>1.000000e+00</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>1.000000</td>\n",
+       "      <td>1.000000e+00</td>\n",
+       "      <td>1.000000e+00</td>\n",
+       "      <td>1.000000e+00</td>\n",
+       "      <td>1.000000e+00</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>INSPECTORNAME</th>\n",
+       "      <td>0.0</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>XCOORD</th>\n",
+       "      <td>302985.0</td>\n",
+       "      <td>3.988348e+05</td>\n",
+       "      <td>3251.499740</td>\n",
+       "      <td>390097.460000</td>\n",
+       "      <td>3.968295e+05</td>\n",
+       "      <td>3.984992e+05</td>\n",
+       "      <td>4.008872e+05</td>\n",
+       "      <td>4.078484e+05</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>YCOORD</th>\n",
+       "      <td>302985.0</td>\n",
+       "      <td>1.382333e+05</td>\n",
+       "      <td>3470.000502</td>\n",
+       "      <td>127297.420000</td>\n",
+       "      <td>1.363069e+05</td>\n",
+       "      <td>1.379835e+05</td>\n",
+       "      <td>1.405768e+05</td>\n",
+       "      <td>1.475002e+05</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>LATITUDE</th>\n",
+       "      <td>302985.0</td>\n",
+       "      <td>3.891195e+01</td>\n",
+       "      <td>0.031258</td>\n",
+       "      <td>38.813448</td>\n",
+       "      <td>3.889460e+01</td>\n",
+       "      <td>3.890968e+01</td>\n",
+       "      <td>3.893306e+01</td>\n",
+       "      <td>3.899544e+01</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>LONGITUDE</th>\n",
+       "      <td>302985.0</td>\n",
+       "      <td>-7.701344e+01</td>\n",
+       "      <td>0.037491</td>\n",
+       "      <td>-77.114206</td>\n",
+       "      <td>-7.703655e+01</td>\n",
+       "      <td>-7.701731e+01</td>\n",
+       "      <td>-7.698977e+01</td>\n",
+       "      <td>-7.690976e+01</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>ZIPCODE</th>\n",
+       "      <td>302983.0</td>\n",
+       "      <td>2.002962e+04</td>\n",
+       "      <td>867.804543</td>\n",
+       "      <td>-1865.000000</td>\n",
+       "      <td>2.000300e+04</td>\n",
+       "      <td>2.001100e+04</td>\n",
+       "      <td>2.001800e+04</td>\n",
+       "      <td>7.073900e+04</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>MARADDRESSREPOSITORYID</th>\n",
+       "      <td>294302.0</td>\n",
+       "      <td>2.912035e+05</td>\n",
+       "      <td>270115.221076</td>\n",
+       "      <td>1.000000</td>\n",
+       "      <td>6.951100e+04</td>\n",
+       "      <td>2.405765e+05</td>\n",
+       "      <td>2.946100e+05</td>\n",
+       "      <td>9.141190e+05</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>WARD</th>\n",
+       "      <td>300924.0</td>\n",
+       "      <td>4.335025e+00</td>\n",
+       "      <td>2.151176</td>\n",
+       "      <td>1.000000</td>\n",
+       "      <td>2.000000e+00</td>\n",
+       "      <td>4.000000e+00</td>\n",
+       "      <td>6.000000e+00</td>\n",
+       "      <td>8.000000e+00</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "                           count          mean            std            min  \\\n",
+       "X                       302985.0 -7.701344e+01       0.037492     -77.114209   \n",
+       "Y                       302985.0  3.891196e+01       0.031257      38.813455   \n",
+       "OBJECTID                302985.0  1.335995e+06  102371.072802  928367.000000   \n",
+       "SERVICECALLCOUNT        302985.0  1.000000e+00       0.000000       1.000000   \n",
+       "INSPECTORNAME                0.0           NaN            NaN            NaN   \n",
+       "XCOORD                  302985.0  3.988348e+05    3251.499740  390097.460000   \n",
+       "YCOORD                  302985.0  1.382333e+05    3470.000502  127297.420000   \n",
+       "LATITUDE                302985.0  3.891195e+01       0.031258      38.813448   \n",
+       "LONGITUDE               302985.0 -7.701344e+01       0.037491     -77.114206   \n",
+       "ZIPCODE                 302983.0  2.002962e+04     867.804543   -1865.000000   \n",
+       "MARADDRESSREPOSITORYID  294302.0  2.912035e+05  270115.221076       1.000000   \n",
+       "WARD                    300924.0  4.335025e+00       2.151176       1.000000   \n",
+       "\n",
+       "                                 25%           50%           75%           max  \n",
+       "X                      -7.703655e+01 -7.701731e+01 -7.698978e+01 -7.690953e+01  \n",
+       "Y                       3.889461e+01  3.890972e+01  3.893308e+01  3.899544e+01  \n",
+       "OBJECTID                1.264323e+06  1.340839e+06  1.417109e+06  1.566462e+06  \n",
+       "SERVICECALLCOUNT        1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  \n",
+       "INSPECTORNAME                    NaN           NaN           NaN           NaN  \n",
+       "XCOORD                  3.968295e+05  3.984992e+05  4.008872e+05  4.078484e+05  \n",
+       "YCOORD                  1.363069e+05  1.379835e+05  1.405768e+05  1.475002e+05  \n",
+       "LATITUDE                3.889460e+01  3.890968e+01  3.893306e+01  3.899544e+01  \n",
+       "LONGITUDE              -7.703655e+01 -7.701731e+01 -7.698977e+01 -7.690976e+01  \n",
+       "ZIPCODE                 2.000300e+04  2.001100e+04  2.001800e+04  7.073900e+04  \n",
+       "MARADDRESSREPOSITORYID  6.951100e+04  2.405765e+05  2.946100e+05  9.141190e+05  \n",
+       "WARD                    2.000000e+00  4.000000e+00  6.000000e+00  8.000000e+00  "
+      ]
+     },
+     "execution_count": 70,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.describe().T"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The describe function provides us a ton of great information about numeric variables, like integers and floats. But categorical variables, called \"object\" variables in Python, do not have means, mins, maxes, or standard deviations. So how might we analyze these?\n",
+    "\n",
+    "One of the first steps is to take a look at the unique values of these columns. Let's start with the most interesting one: Service Code Description."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 84,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "147\n"
+     ]
+    }
+   ],
+   "source": [
+    "df['SERVICECODEDESCRIPTION'].unique()\n",
+    "print(df['SERVICECODEDESCRIPTION'].nunique())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We just did two new things right here: we called a column by using its column name, and we called its unique values.\n",
+    "\n",
+    "There's another way to call columns from a Pandas DataFrame if you're feeling lazy and don't want to mess around with brackets."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 75,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array(['Emergency No-Parking Verification', 'Parking Meter Repair',\n",
+       "       'Sidewalk Repair', 'Tree Pruning', 'Bulk Collection',\n",
+       "       'Parking Enforcement', 'Trash Collection - Missed',\n",
+       "       'Sanitation Enforcement', 'Tree Inspection', 'Illegal Dumping',\n",
+       "       'Rodent Inspection and Treatment', 'Yard Waste - Missed',\n",
+       "       'Sidewalk Shoveling Enforcement Exemption', 'Emergency - Trees',\n",
+       "       'Sign Replacement', 'Alley Cleaning', 'Dead Animal Collection',\n",
+       "       'Abandoned Vehicle - On Private Property', 'DMV - Copy of Ticket',\n",
+       "       'Streetlight Repair Investigation', 'Recycling Cart Delivery',\n",
+       "       'Out of State Parking Violation (ROSA)',\n",
+       "       'DMV - Vehicle Registration Issues',\n",
+       "       'DMV - Drivers License/ID Issues', 'Pothole', 'Tree Planting',\n",
+       "       'Leaf Season Collection', 'Residential Snow Removal (ServeDC)',\n",
+       "       'Snow Removal Complaints for Sidewalks', 'Street Cleaning',\n",
+       "       'Street Repair', 'Supercan - Repair', 'Alleylight Repair',\n",
+       "       'Public Space Litter Can- Installation/Removal/Repair',\n",
+       "       'Snow/Ice Removal', 'Residential Parking Permit Violation',\n",
+       "       'Abandoned Vehicle - On Public Property',\n",
+       "       'DC Government Information', 'Trash Cart - Delivery',\n",
+       "       'Recycling Collection - Missed', 'Sign New Investigation',\n",
+       "       'Wire Down/Power Outage', 'Vacant Lot', 'Bicycle Issues',\n",
+       "       'How Is My Driving - Complaint', 'Signs Conflicting',\n",
+       "       'Snow/Ice Removal (Roadways AND Bridge walkways ONLY)',\n",
+       "       'DMV - Forms, Applications, and Manuals Request', 'Tree Removal',\n",
+       "       'Christmas Tree Removal-Seasonal', 'Sign Removal investigation',\n",
+       "       'TRU Report', 'DMV - Processing Center Manager',\n",
+       "       'FEMS - Community Events', 'Traffic Signal Maintanence',\n",
+       "       'Resident Parking Permit', 'Container Removal',\n",
+       "       'Supercan - Delivery', 'Bus/Rail Issues',\n",
+       "       'Homeless Services - Winter/Hypothermia Season',\n",
+       "       'Sign Missing Investigation', 'Snow Metro Bus Shelter/Stop',\n",
+       "       'Snow Ticket Reimbursement', 'DMV - Vehicle Title Issues',\n",
+       "       'DOEE - Engine Idling Tips', 'Abandoned Bicycle',\n",
+       "       'FEMS - Smoke Alarm Application', 'Traffic Calming',\n",
+       "       'Graffiti Removal', 'Utility Repair Investigation', 'Snow Towing',\n",
+       "       'Marking Installation', 'Public Space Litter Can-Collection',\n",
+       "       'DMV - Driver Record Issues', 'DOEE - Nuisance Odor Complaints',\n",
+       "       'Trash Cart Repair', 'DMV - Vehicle Insurance Lapse',\n",
+       "       'Insect Treatment', 'Alley Repair',\n",
+       "       'DMV - Online Processing Issues', 'Marking Removal',\n",
+       "       'DMV - Ticket Payment Dispute', 'Recycling Cart - Repair',\n",
+       "       'Illegal Poster', 'Curb and Gutter Repair', 'Marking Modification',\n",
+       "       'DOEE - Ban on Foam Food Containers',\n",
+       "       'DOEE - Construction – Erosion Runoff',\n",
+       "       'DMV - eTIMS Ticket Alert Services Issues',\n",
+       "       'How Is My Driving - Compliment', 'DMV - Refunds - Tickets',\n",
+       "       'Marking Maintenance', 'DMV - Hearings',\n",
+       "       'Traffic Safety Investigation', 'DOEE - Foam Ban Tips',\n",
+       "       'Recycling- Information Request',\n",
+       "       'DOEE - General Environmental Concerns',\n",
+       "       'DMV - Adjudication Supervisor', 'Safe Routes to School',\n",
+       "       'Roadway Repair', 'DMV - Driver and Vehicle Services Refund',\n",
+       "       'DMV - Vehicle Inspection Issues',\n",
+       "       'Curb and Gutter Repair Investigation', 'Light-Light Pole',\n",
+       "       'DMV - Drivers License/ID Reinstatement',\n",
+       "       'Emergency - Power Outage/Wires Down', 'Snow Other',\n",
+       "       'DMV - Offset Tracking', 'Roadway Marking Maintenance',\n",
+       "       '311Force Reported Issues', 'Alleylight Repair Investigation',\n",
+       "       'Signed Street Sweeping Missed', 'Insects', 'Traffic Signal Issue',\n",
+       "       'Grass and Weeds Mowing', 'Roadway Striping / Markings',\n",
+       "       'OUC NYE Test', 'Child Safety Seat Program',\n",
+       "       'School Crossing Guard', 'Streetcar',\n",
+       "       'Light-Tunnel/Underpass Light Repair',\n",
+       "       'General Environmental Concerns (DOEE)', 'Roadway Signs',\n",
+       "       'DPW Correspondence Tracking', 'DMV - Appeal',\n",
+       "       'Recycling - Commercial Only', 'Roadway Marking Modification',\n",
+       "       'Utility Repair Issue', 'DOEE - Bag Law Tips',\n",
+       "       'Light-Overhead Guide Sign Lighting Repair', 'Illegal Fireworks',\n",
+       "       'Emergency - Heating and Cooling', 'Emergency - Senior Assistance',\n",
+       "       'Emergency - Supplies', 'Report Invalid Address to GIS Dept',\n",
+       "       'FEMS - Fire Safety Education', 'Recycling - School Program',\n",
+       "       'School Transit Subsidy Program', 'Citation',\n",
+       "       'Emergency - Flooding', 'Roadway Marking Removal',\n",
+       "       'Bicycle Services', 'Ticket Ombudsman',\n",
+       "       'School Crossing Guard Program', 'DDS - Serious Medication Error',\n",
+       "       'SalesForce DC311 Application Request',\n",
+       "       'Hypothermia Shelter Information'], dtype=object)"
+      ]
+     },
+     "execution_count": 75,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.SERVICECODEDESCRIPTION.unique()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercise 14\n",
+    "\n",
+    "We can figure out how many unique values we have by getting the length of this object. Try it."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 85,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "147"
+      ]
+     },
+     "execution_count": 85,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "len(df.SERVICECODEDESCRIPTION.unique())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We can also get value counts for each unique value of a categorical variable using value_counts."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 86,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Bulk Collection                                         45405\n",
+       "Parking Meter Repair                                    34077\n",
+       "Parking Enforcement                                     33733\n",
+       "Emergency No-Parking Verification                       12644\n",
+       "Streetlight Repair Investigation                        12344\n",
+       "Pothole                                                 11225\n",
+       "Trash Collection - Missed                                8159\n",
+       "Alley Cleaning                                           7285\n",
+       "Residential Parking Permit Violation                     6680\n",
+       "Sanitation Enforcement                                   6423\n",
+       "Sidewalk Shoveling Enforcement Exemption                 5777\n",
+       "Snow/Ice Removal                                         5648\n",
+       "Illegal Dumping                                          5542\n",
+       "Recycling Collection - Missed                            5431\n",
+       "Sidewalk Repair                                          5403\n",
+       "Street Cleaning                                          5386\n",
+       "Residential Snow Removal (ServeDC)                       5336\n",
+       "Graffiti Removal                                         4972\n",
+       "Abandoned Vehicle - On Public Property                   4667\n",
+       "Tree Pruning                                             4071\n",
+       "DMV - Drivers License/ID Issues                          3993\n",
+       "Tree Inspection                                          3867\n",
+       "Rodent Inspection and Treatment                          3531\n",
+       "Out of State Parking Violation (ROSA)                    2945\n",
+       "Snow/Ice Removal (Roadways AND Bridge walkways ONLY)     2858\n",
+       "Tree Planting                                            2673\n",
+       "Dead Animal Collection                                   2654\n",
+       "DMV - Vehicle Registration Issues                        2600\n",
+       "TRU Report                                               2500\n",
+       "Tree Removal                                             2404\n",
+       "                                                        ...  \n",
+       "Light-Tunnel/Underpass Light Repair                        19\n",
+       "OUC NYE Test                                               17\n",
+       "Marking Removal                                            14\n",
+       "Hypothermia Shelter Information                            11\n",
+       "Child Safety Seat Program                                  10\n",
+       "Streetcar                                                   7\n",
+       "DOEE - Bag Law Tips                                         6\n",
+       "Recycling - Commercial Only                                 5\n",
+       "Snow Other                                                  5\n",
+       "Roadway Marking Removal                                     4\n",
+       "School Crossing Guard Program                               4\n",
+       "Recycling - School Program                                  3\n",
+       "Emergency - Senior Assistance                               3\n",
+       "Report Invalid Address to GIS Dept                          2\n",
+       "DPW Correspondence Tracking                                 2\n",
+       "Insects                                                     2\n",
+       "Emergency - Flooding                                        2\n",
+       "Emergency - Heating and Cooling                             1\n",
+       "DOEE - Foam Ban Tips                                        1\n",
+       "School Transit Subsidy Program                              1\n",
+       "Citation                                                    1\n",
+       "Light-Light Pole                                            1\n",
+       "Light-Overhead Guide Sign Lighting Repair                   1\n",
+       "DDS - Serious Medication Error                              1\n",
+       "General Environmental Concerns (DOEE)                       1\n",
+       "Illegal Fireworks                                           1\n",
+       "Ticket Ombudsman                                            1\n",
+       "SalesForce DC311 Application Request                        1\n",
+       "Emergency - Supplies                                        1\n",
+       "FEMS - Fire Safety Education                                1\n",
+       "Name: SERVICECODEDESCRIPTION, Length: 147, dtype: int64"
+      ]
+     },
+     "execution_count": 86,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.SERVICECODEDESCRIPTION.value_counts()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercise 15\n",
+    "\n",
+    "What's the most common request? What does that request mean? Check out the District's online 311 portal at 311.dc.gov to learn more about the top service request. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 91,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Bulk Collection                                         45405\n",
+       "Parking Meter Repair                                    34077\n",
+       "Parking Enforcement                                     33733\n",
+       "Emergency No-Parking Verification                       12644\n",
+       "Streetlight Repair Investigation                        12344\n",
+       "Pothole                                                 11225\n",
+       "Trash Collection - Missed                                8159\n",
+       "Alley Cleaning                                           7285\n",
+       "Residential Parking Permit Violation                     6680\n",
+       "Sanitation Enforcement                                   6423\n",
+       "Sidewalk Shoveling Enforcement Exemption                 5777\n",
+       "Snow/Ice Removal                                         5648\n",
+       "Illegal Dumping                                          5542\n",
+       "Recycling Collection - Missed                            5431\n",
+       "Sidewalk Repair                                          5403\n",
+       "Street Cleaning                                          5386\n",
+       "Residential Snow Removal (ServeDC)                       5336\n",
+       "Graffiti Removal                                         4972\n",
+       "Abandoned Vehicle - On Public Property                   4667\n",
+       "Tree Pruning                                             4071\n",
+       "DMV - Drivers License/ID Issues                          3993\n",
+       "Tree Inspection                                          3867\n",
+       "Rodent Inspection and Treatment                          3531\n",
+       "Out of State Parking Violation (ROSA)                    2945\n",
+       "Snow/Ice Removal (Roadways AND Bridge walkways ONLY)     2858\n",
+       "Tree Planting                                            2673\n",
+       "Dead Animal Collection                                   2654\n",
+       "DMV - Vehicle Registration Issues                        2600\n",
+       "TRU Report                                               2500\n",
+       "Tree Removal                                             2404\n",
+       "                                                        ...  \n",
+       "Light-Tunnel/Underpass Light Repair                        19\n",
+       "OUC NYE Test                                               17\n",
+       "Marking Removal                                            14\n",
+       "Hypothermia Shelter Information                            11\n",
+       "Child Safety Seat Program                                  10\n",
+       "Streetcar                                                   7\n",
+       "DOEE - Bag Law Tips                                         6\n",
+       "Recycling - Commercial Only                                 5\n",
+       "Snow Other                                                  5\n",
+       "Roadway Marking Removal                                     4\n",
+       "School Crossing Guard Program                               4\n",
+       "Recycling - School Program                                  3\n",
+       "Emergency - Senior Assistance                               3\n",
+       "Report Invalid Address to GIS Dept                          2\n",
+       "DPW Correspondence Tracking                                 2\n",
+       "Insects                                                     2\n",
+       "Emergency - Flooding                                        2\n",
+       "Emergency - Heating and Cooling                             1\n",
+       "DOEE - Foam Ban Tips                                        1\n",
+       "School Transit Subsidy Program                              1\n",
+       "Citation                                                    1\n",
+       "Light-Light Pole                                            1\n",
+       "Light-Overhead Guide Sign Lighting Repair                   1\n",
+       "DDS - Serious Medication Error                              1\n",
+       "General Environmental Concerns (DOEE)                       1\n",
+       "Illegal Fireworks                                           1\n",
+       "Ticket Ombudsman                                            1\n",
+       "SalesForce DC311 Application Request                        1\n",
+       "Emergency - Supplies                                        1\n",
+       "FEMS - Fire Safety Education                                1\n",
+       "Name: SERVICECODEDESCRIPTION, Length: 147, dtype: int64"
+      ]
+     },
+     "execution_count": 91,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.SERVICECODEDESCRIPTION.value_counts()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercise 16\n",
+    "Take a look at the data using some of the techniques including shape, head, and describe.\n",
+    "\n",
+    "Recall that we saw that date variables are stored as object data types in Pandas Data Frames.\n",
+    "However, we CAN turn them in to datetime types using Pandas's nifty datetime commands.\n",
+    "Let's begin by converting the service order date into a new datetime column in our DataFrame called \"request_date\".\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 92,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "df['request_date'] = pd.to_datetime(df['SERVICEORDERDATE'])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "With any datetime object, we can use dt to pull the particulare date time that we're interested in.\n",
+    "Here we use the value_counts function to look at the data by month.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 93,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1     34542\n",
+       "8     29892\n",
+       "9     26935\n",
+       "6     26253\n",
+       "7     25881\n",
+       "5     24289\n",
+       "10    24236\n",
+       "3     23892\n",
+       "4     23725\n",
+       "2     21541\n",
+       "11    20990\n",
+       "12    20809\n",
+       "Name: request_date, dtype: int64"
+      ]
+     },
+     "execution_count": 93,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.request_date.dt.month.value_counts()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Notice that January is the month in which the city received the most service requests. However, the other top months for service requests are all summer months, and our winter months (December, November, February) are those with the least service requests. Does January seem to be an anomaly? Let's look closer.\n",
+    "The value_counts function returns to pieces of information: the values, which are the actual counts of rows or observations, and the index, which the values are grouped by. In this case, the index is the set of months and the values are the number of service requests each month. The value_counts function returns an output that is sorted by the values, but we can also sort by the index using the sort_index function.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 94,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1     34542\n",
+       "2     21541\n",
+       "3     23892\n",
+       "4     23725\n",
+       "5     24289\n",
+       "6     26253\n",
+       "7     25881\n",
+       "8     29892\n",
+       "9     26935\n",
+       "10    24236\n",
+       "11    20990\n",
+       "12    20809\n",
+       "Name: request_date, dtype: int64"
+      ]
+     },
+     "execution_count": 94,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.request_date.dt.month.value_counts().sort_index()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "It may be helpful to plot this output to help us visualize the number of service requests made throughout the year."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 96,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<matplotlib.axes._subplots.AxesSubplot at 0x21b4285de48>"
+      ]
+     },
+     "execution_count": 96,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "requests_per_month = df.request_date.dt.month.value_counts()\n",
+    "requests_per_month.sort_index().plot()\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "We can see that January does, indeed, look anomalous. After spiking in January, service requests are low throughout the winter months, increasing as we move into the warmer months and peaking in August, after which they dip down again as we return to winter.\n",
+    "Let's take a look at what's happening in January. We can focus in on January by selecting the subset of our service requests that came in January.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 97,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2016-01-01 00:30:30\n",
+      "2016-01-31 23:43:20\n"
+     ]
+    }
+   ],
+   "source": [
+    "jan_requests = df[df.request_date.dt.month==1]\n",
+    "print(jan_requests.request_date.min())\n",
+    "print(jan_requests.request_date.max())\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "Here, we've fed Python a logical statement telling it to return values from df where the date-part month in the column 'request_date' is equal to 1 (or January).\n",
+    "# Exercise 4\n",
+    "To better understand how this works, try taking the command out of the square brackets and running it. What does it return?\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 98,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0          True\n",
+       "1         False\n",
+       "2         False\n",
+       "3         False\n",
+       "4         False\n",
+       "5         False\n",
+       "6         False\n",
+       "7         False\n",
+       "8         False\n",
+       "9         False\n",
+       "10        False\n",
+       "11        False\n",
+       "12        False\n",
+       "13         True\n",
+       "14        False\n",
+       "15        False\n",
+       "16        False\n",
+       "17        False\n",
+       "18        False\n",
+       "19        False\n",
+       "20        False\n",
+       "21        False\n",
+       "22        False\n",
+       "23         True\n",
+       "24        False\n",
+       "25        False\n",
+       "26        False\n",
+       "27        False\n",
+       "28        False\n",
+       "29        False\n",
+       "          ...  \n",
+       "302955    False\n",
+       "302956    False\n",
+       "302957    False\n",
+       "302958    False\n",
+       "302959    False\n",
+       "302960    False\n",
+       "302961    False\n",
+       "302962    False\n",
+       "302963    False\n",
+       "302964    False\n",
+       "302965    False\n",
+       "302966    False\n",
+       "302967    False\n",
+       "302968    False\n",
+       "302969    False\n",
+       "302970    False\n",
+       "302971    False\n",
+       "302972    False\n",
+       "302973    False\n",
+       "302974    False\n",
+       "302975    False\n",
+       "302976    False\n",
+       "302977    False\n",
+       "302978    False\n",
+       "302979    False\n",
+       "302980    False\n",
+       "302981    False\n",
+       "302982    False\n",
+       "302983    False\n",
+       "302984    False\n",
+       "Name: request_date, Length: 302985, dtype: bool"
+      ]
+     },
+     "execution_count": 98,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.request_date.dt.month==1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This returns a string of True and False statements. The 'True' values are the ones the DataFrame keeps, and the 'False' ones, it discards.\n",
+    "Now that we have the January data, let's look at what kinds of requests were being made in January.\n",
+    "\n",
+    "## Exercise 17\n",
+    "\n",
+    "Get value counts for the service code description from the subsample of January service requests. What where the most common requests?\n",
+    "\n",
+    "The city received a TON of snow removal requests in January 2016, but received very few other requests. It seems that these requests for snow removal are driving the high number of requests in January.\n",
+    "If you were living in the District in January 2016, you'll remember this was the month that Snowzilla hit the city. This was a record-breaking snowstorm that dumped feet of snow on the city from January 22nd to January 23rd.\n",
+    "Let's take a look at the top request in January, Snow/Ice Removal."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 100,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Snow/Ice Removal                                        5347\n",
+       "Residential Snow Removal (ServeDC)                      5278\n",
+       "Sidewalk Shoveling Enforcement Exemption                5266\n",
+       "Snow/Ice Removal (Roadways AND Bridge walkways ONLY)    2768\n",
+       "Bulk Collection                                         2352\n",
+       "Parking Enforcement                                     2079\n",
+       "Parking Meter Repair                                    1997\n",
+       "Snow Removal Complaints for Sidewalks                   1030\n",
+       "Streetlight Repair Investigation                         817\n",
+       "Emergency No-Parking Verification                        558\n",
+       "Pothole                                                  543\n",
+       "Trash Collection - Missed                                444\n",
+       "Sanitation Enforcement                                   372\n",
+       "Residential Parking Permit Violation                     357\n",
+       "Abandoned Vehicle - On Public Property                   324\n",
+       "Alley Cleaning                                           309\n",
+       "DMV - Drivers License/ID Issues                          290\n",
+       "Illegal Dumping                                          269\n",
+       "Recycling Collection - Missed                            239\n",
+       "DMV - Vehicle Registration Issues                        238\n",
+       "Street Cleaning                                          226\n",
+       "Alleylight Repair                                        210\n",
+       "Sidewalk Repair                                          207\n",
+       "TRU Report                                               169\n",
+       "Out of State Parking Violation (ROSA)                    167\n",
+       "Dead Animal Collection                                   146\n",
+       "Christmas Tree Removal-Seasonal                          133\n",
+       "Sign Replacement                                         131\n",
+       "Traffic Signal Maintanence                               127\n",
+       "Street Repair                                            124\n",
+       "                                                        ... \n",
+       "DMV - Processing Center Manager                            6\n",
+       "Safe Routes to School                                      5\n",
+       "DC Government Information                                  5\n",
+       "DOEE - Engine Idling Tips                                  5\n",
+       "DOEE - Ban on Foam Food Containers                         4\n",
+       "Marking Modification                                       4\n",
+       "Snow Other                                                 4\n",
+       "Illegal Poster                                             4\n",
+       "DMV - Vehicle Inspection Issues                            4\n",
+       "DMV - Driver and Vehicle Services Refund                   4\n",
+       "Recycling- Information Request                             3\n",
+       "Emergency - Power Outage/Wires Down                        2\n",
+       "Insect Treatment                                           2\n",
+       "DMV - eTIMS Ticket Alert Services Issues                   2\n",
+       "Signed Street Sweeping Missed                              2\n",
+       "Curb and Gutter Repair Investigation                       2\n",
+       "Traffic Safety Investigation                               1\n",
+       "OUC NYE Test                                               1\n",
+       "DMV - Adjudication Supervisor                              1\n",
+       "Light-Light Pole                                           1\n",
+       "Roadway Striping / Markings                                1\n",
+       "Light-Overhead Guide Sign Lighting Repair                  1\n",
+       "Marking Removal                                            1\n",
+       "Roadway Marking Maintenance                                1\n",
+       "DOEE - Foam Ban Tips                                       1\n",
+       "DMV - Offset Tracking                                      1\n",
+       "Grass and Weeds Mowing                                     1\n",
+       "School Crossing Guard                                      1\n",
+       "How Is My Driving - Compliment                             1\n",
+       "Alleylight Repair Investigation                            1\n",
+       "Name: SERVICECODEDESCRIPTION, Length: 113, dtype: int64"
+      ]
+     },
+     "execution_count": 100,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "jan_requests.SERVICECODEDESCRIPTION.value_counts()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercise 18\n",
+    "\n",
+    "Get the subsample of service requests for Snow/Ice Removal. Get the number of requests for each day in January 2016, then plot those requests so we can look at them over the course of the month.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 108,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "AttributeError",
+     "evalue": "'Series' object has no attribute 'SERVICECODEDESCRIPTION'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
+      "\u001b[1;32m<ipython-input-108-34423137e0de>\u001b[0m in \u001b[0;36m<module>\u001b[1;34m()\u001b[0m\n\u001b[0;32m      1\u001b[0m \u001b[0mjan_requests\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mSERVICECODEDESCRIPTION\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mvalue_counts\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m----> 2\u001b[1;33m \u001b[0mprint\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mjan_requests\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mrequest_date\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mSERVICECODEDESCRIPTION\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;34m'Snow/Ice Removal'\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[1;32mC:\\Users\\Michael\\Anaconda3\\lib\\site-packages\\pandas\\core\\generic.py\u001b[0m in \u001b[0;36m__getattr__\u001b[1;34m(self, name)\u001b[0m\n\u001b[0;32m   2968\u001b[0m             \u001b[1;32mif\u001b[0m \u001b[0mname\u001b[0m \u001b[1;32min\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_info_axis\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m   2969\u001b[0m                 \u001b[1;32mreturn\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m[\u001b[0m\u001b[0mname\u001b[0m\u001b[1;33m]\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m-> 2970\u001b[1;33m             \u001b[1;32mreturn\u001b[0m \u001b[0mobject\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m__getattribute__\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mname\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m   2971\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m   2972\u001b[0m     \u001b[1;32mdef\u001b[0m \u001b[0m__setattr__\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mname\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mvalue\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;31mAttributeError\u001b[0m: 'Series' object has no attribute 'SERVICECODEDESCRIPTION'"
+     ]
+    }
+   ],
+   "source": [
+    "jan_requests.SERVICECODEDESCRIPTION.value_counts()\n",
+    "print(jan_requests.request_date.SERVICECODEDESCRIPTION('Snow/Ice Removal'))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We can see that almost all of the requests for snow and ice removal came in the days following Snowzilla.\n",
+    "Now let's take a look at WHERE those requests were coming from. DC is organized into 8 wards. These wards are the largest political geographies in the District. Each ward has a representative on the District Council who is elected directly by the residents of that ward."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercise 19\n",
+    "\n",
+    "Get the number of requests for snow and ice removal from each of the wards in January 2016."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "By far, the most requests for snow and ice removal came from Ward 7, while the fewest (almost a thousand fewer) came from Ward 2.\n",
+    "Now let's take a look at response times. Ward 7 had the most requests, but is that an indication that the city was slower to plot roads in Ward 7 than it was in other wards?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercise 20\n",
+    "Create a new date column from the resolution date column in our DataFrame of requests for snow and ice removal in January.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Because the resolution date comes AFTER the service request, the resolution date will always be 'greater' than the request date. We can get the amount of time took the city to respond to each service request by taking the difference between the resolution date and the request date.\n",
+    "\n",
+    "## Exercise 21\n",
+    "\n",
+    "Subtract the request date from the resolution date and assign that to an object called \"time_diff\". Print time_diff."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Great! Now let's convert time_diff to the number of hours it took to respond using the astype function. This function can be used to change the data type of a column. The timedelta64 function lets us convert to the datetime part we're interested in.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "time_diff.astype('timedelta64[h]')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercise 22\n",
+    "Create a new column in our DataFrame calls \"response_time\" that is the time difference between resolution date and request date in hours.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now that we have our response times, let's use the groupby function to get the average response time by ward."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "jan_snow_removal.groupby('WARD').response_time.mean()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This looks a lot like the output from the value_counts function. In fact, value_counts is a type of groupby function that simply returns counts for each of the unique values in a column.\n",
+    "The groupby function allows us to aggregate the data by the unique values of a column (or multiple columns) and return various statistics, including mean, median, minimum (min), maximum (max), counts, etc.\n",
+    "Again, we have two parts to the output: the index, in this case the ward, and the values, in this case the average hours it to the city to respond to a request for snow and ice removal. The groupby function returns the values sorted by the index. However, we can sort the values by the value using the sort_values function.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercise 23\n",
+    "Get the average response times by ward again and sort the values by the average response time in ascending order (from highest to lowest). Which ward had the longest response times? Which had the lowest?\n",
+    "\n",
+    "Now we know which wards made the mo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now we know which wards made the most requests for snow and ice removal following the historic snowstorm in January 2016. Why do you think some wards received faster service than others? Do you think you could build a model predicting which requests would receive the fastest response?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "anaconda-cloud": {},
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}
